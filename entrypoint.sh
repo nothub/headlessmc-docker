@@ -15,7 +15,7 @@ adduser \
     --home "/work" \
     "hmc" 1>/dev/null 2>/dev/null
 
-if test ! -f "config.properties"; then
+if test ! -f "/work/HeadlessMC/config.properties"; then
     mkdir -p "/work/HeadlessMC"
     cp "/opt/hmc/config.defaults.properties" "/work/HeadlessMC/config.properties"
 fi
