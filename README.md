@@ -27,8 +27,8 @@ docker run --rm ${volumes} headlessmc:latest "fabric" "1.19.4"
 mkdir -p mc/mods
 cp mymod.jar mc/mods/
 
-# define server
-echo "hmc.gameargs=--server 127.0.0.1 --port 25565" >> hmc/config.properties
+# define server (hmc.gameargs)
+nano hmc/config.properties
 
 # show available mc versions
 docker run --rm ${volumes} headlessmc:latest "versions"
