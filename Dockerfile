@@ -1,7 +1,7 @@
 FROM debian:12-slim
 
-ARG HMC_VERSION="1.7.2"
-ARG HMC_CHECKSUM="a3488d98dcb20c55ef4f91783393529f78a60c843d72d9bae5ddc00944b14ffa"
+ARG HMC_VERSION="1.7.3"
+ARG HMC_CHECKSUM="015011429d659ac4b39bb137acf284cecbd92997eb7b0f15f083870610a0b3ba"
 ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VERSION}/headlessmc-launcher-${HMC_VERSION}.jar"
 
 ADD "${HMC_URL}" /opt/hmc/launcher.jar
