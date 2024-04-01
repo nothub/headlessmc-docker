@@ -36,3 +36,6 @@ envvars="-e 'ADDR=10.0.0.42' -e 'PORT=9001'"
 # launch specified mc version and join server
 docker run -it --rm ${volumes} ${envvars} n0thub/headlessmc:latest "launch" "1.20.4"
 ```
+
+Some versions will not join a server while the `AccessibilityOnboardingScreen` is opened.
+Make sure to prepare the client accordingly.
