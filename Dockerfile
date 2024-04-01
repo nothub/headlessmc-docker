@@ -22,4 +22,7 @@ RUN apt-get update                              \
 ENV PUID=1000
 ENV PGID=1000
 
+ENV ADDR=""
+ENV PORT=""
+
 ENTRYPOINT ["tini", "-v", "--", "/opt/hmc/entrypoint.sh"]
