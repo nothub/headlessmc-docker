@@ -20,22 +20,22 @@ docker run --rm ${volumes} n0thub/headlessmc:latest "login" "<mail>" "<pass>"
 # download mc
 docker run --rm ${volumes} n0thub/headlessmc:latest "download" "1.20.4"
 
+# launch client and join server
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest "launch" "1.20.4"
+
 # download fabric
 docker run --rm ${volumes} n0thub/headlessmc:latest "fabric" "1.20.4"
-
-# show available mc versions
-docker run --rm ${volumes} n0thub/headlessmc:latest "versions"
 
 # install mod
 mkdir -p mc/mods
 cp mymod.jar mc/mods/
 
-# set container env vars to configure target server
-envvars="-e 'ADDR=10.0.0.42' -e 'PORT=9001'"
+# show available mc versions
+docker run --rm ${volumes} n0thub/headlessmc:latest "versions"
 
-# launch specified mc version and join server
-docker run -it --rm ${volumes} ${envvars} n0thub/headlessmc:latest "launch" "1.20.4"
+# launch fabric
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" n0thub/headlessmc:latest "launch" "fabric-loader-0.15.9-1.20.4"
 ```
 
 Some versions will not join a server while the `AccessibilityOnboardingScreen` is opened.
-Make sure to prepare the client accordingly.
+Make sure to prepare the client accordingly or use a [mod](https://github.com/nothub/headlessbot/blob/6a5395956258e4dc3f2b519dd2dd032ac0304644/src/main/java/lol/hub/headlessbot/Mod.java#L62) to close the screen.
