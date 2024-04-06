@@ -9,32 +9,32 @@ for [3arthqu4ke/HeadlessMc](https://github.com/3arthqu4ke/HeadlessMc)
 
 ```sh
 # show hmc help
-docker run --rm n0thub/headlessmc:latest "help"
+docker run --rm n0thub/headlessmc:latest 'help'
 
 # use volumes to persist mc and hmc data
 volumes="-v ${PWD}/mc:/work/.minecraft -v ${PWD}/hmc:/work/HeadlessMC"
 
 # msa login
-docker run --rm ${volumes} n0thub/headlessmc:latest "login" "<mail>" "<pass>"
+docker run --rm ${volumes} n0thub/headlessmc:latest 'login <mail> <pass>'
 
 # download mc
-docker run --rm ${volumes} n0thub/headlessmc:latest "download" "1.20.4"
+docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.20.4'
 
 # launch client and join server
-docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest "launch" "1.20.4"
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest 'launch 1.20.4'
 
 # download fabric
-docker run --rm ${volumes} n0thub/headlessmc:latest "fabric" "1.20.4"
+docker run --rm ${volumes} n0thub/headlessmc:latest 'fabric 1.20.4'
 
-# install mod
+# install mods
 mkdir -p mc/mods
 cp mymod.jar mc/mods/
 
 # show available mc versions
-docker run --rm ${volumes} n0thub/headlessmc:latest "versions"
+docker run --rm ${volumes} n0thub/headlessmc:latest 'versions'
 
 # launch fabric
-docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" n0thub/headlessmc:latest "launch" "fabric-loader-0.15.9-1.20.4"
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" n0thub/headlessmc:latest 'launch 1 -id'
 ```
 
 Some versions will not join a server while the `AccessibilityOnboardingScreen` is opened.
