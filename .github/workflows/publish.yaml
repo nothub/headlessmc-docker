@@ -28,5 +28,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:latest
