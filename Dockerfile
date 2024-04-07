@@ -7,8 +7,7 @@ ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VE
 ADD "${HMC_URL}" /opt/hmc/launcher.jar
 RUN echo "${HMC_CHECKSUM} /opt/hmc/launcher.jar" | sha256sum -c -
 
-COPY entrypoint.sh /opt/hmc/entrypoint.sh
-COPY config.defaults.properties /opt/hmc/config.defaults.properties
+COPY rootfs/ /
 
 RUN apt-get update                              \
  && apt-get upgrade -qy --with-new-pkgs         \
