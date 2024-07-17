@@ -30,7 +30,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}+java8
+            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}-java8
 
       - name: 'Activate Java 11'
         run: sed -Ei "s/temurin-[0-9]{1,2}-jre/temurin-11-jre/" Dockerfile
@@ -40,7 +40,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}+java11
+            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}-java11
 
       - name: 'Activate Java 17'
         run: sed -Ei "s/temurin-[0-9]{1,2}-jre/temurin-17-jre/" Dockerfile
@@ -50,7 +50,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}+java17
+            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}-java17
 
       - name: 'Activate Java 21'
         run: sed -Ei "s/temurin-[0-9]{1,2}-jre/temurin-21-jre/" Dockerfile
@@ -60,6 +60,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}+java21
+            ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}-java21
             ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:${{ env.HMC_VERSION }}
             ${{ secrets.DOCKERHUB_USERNAME }}/headlessmc:latest
