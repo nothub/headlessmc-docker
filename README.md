@@ -18,13 +18,16 @@ volumes="-v ${PWD}/mc:/work/.minecraft -v ${PWD}/hmc:/work/HeadlessMC"
 docker run --rm ${volumes} n0thub/headlessmc:latest 'login <mail> <pass>'
 
 # download mc
-docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.20.4'
+docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.20.6'
 
 # launch client and join server
-docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest 'launch 1.20.4'
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest 'launch 1.20.6'
+
+# there is an image for each java version
+docker run --rm ${volumes} n0thub/headlessmc:1.10.2-java17 'download 1.20.4'
 
 # download fabric
-docker run --rm ${volumes} n0thub/headlessmc:latest 'fabric 1.20.4'
+docker run --rm ${volumes} n0thub/headlessmc:latest 'fabric 1.20.6'
 
 # install mods
 mkdir -p mc/mods
