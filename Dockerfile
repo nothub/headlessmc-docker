@@ -13,15 +13,16 @@ RUN apt-get update                              \
  && apt-get upgrade -qy --with-new-pkgs         \
  && apt-get install -qy --no-install-recommends \
     apt-transport-https                         \
+    ca-certificates                             \
     gpg                                         \
- && cat 'deb [arch=amd64 signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb bookworm main' > /etc/apt/sources.list.d/adoptium.list \
+ && echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb bookworm main' > /etc/apt/sources.list.d/adoptium.list \
  && cat /usr/share/keyrings/adoptium.asc | gpg --dearmor > /usr/share/keyrings/adoptium.gpg \
  && rm -f /usr/share/keyrings/adoptium.asc      \
  && apt-get update                              \
  && apt-get install -qy --no-install-recommends \
     temurin-8-jdk                               \
-    temurin-17-jdk                              \
     temurin-11-jdk                              \
+    temurin-17-jdk                              \
     temurin-21-jdk                              \
  && apt-get clean -qy                           \
  && apt-get autoremove -qy                      \
