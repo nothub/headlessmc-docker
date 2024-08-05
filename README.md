@@ -39,7 +39,7 @@ cp mymod.jar mc/mods/
 docker run --rm ${volumes} n0thub/headlessmc:latest 'versions'
 
 # launch fabric
-docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" n0thub/headlessmc:latest 'launch 1 -id'
+docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" n0thub/headlessmc:latest 'launch 0 -id'
 ```
 
 Some versions will not join a server while the `AccessibilityOnboardingScreen` is opened.
