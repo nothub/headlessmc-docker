@@ -23,8 +23,10 @@ docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.20.6'
 # launch client and join server
 docker run -it --rm ${volumes} -e "ADDR=10.0.0.42" -e "PORT=9001" n0thub/headlessmc:latest 'launch 1.20.6'
 
-# there is an image for each java version
-docker run --rm ${volumes} n0thub/headlessmc:1.10.2-java17 'download 1.20.4'
+# the image contains all required java versions
+docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.12.2'
+docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.19.4'
+docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.21'
 
 # download fabric
 docker run --rm ${volumes} n0thub/headlessmc:latest 'fabric 1.20.6'
