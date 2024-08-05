@@ -15,6 +15,7 @@ RUN apt-get update                              \
     apt-transport-https                         \
     ca-certificates                             \
     gpg                                         \
+    tini                                        \
  && echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb bookworm main' > /etc/apt/sources.list.d/adoptium.list \
  && cat /usr/share/keyrings/adoptium.asc | gpg --dearmor > /usr/share/keyrings/adoptium.gpg \
  && rm -f /usr/share/keyrings/adoptium.asc      \
