@@ -14,8 +14,8 @@ docker run --rm n0thub/headlessmc:latest 'help'
 # use volumes to persist mc and hmc data
 volumes="-v ${PWD}/mc:/work/.minecraft -v ${PWD}/hmc:/work/HeadlessMC"
 
-# msa login
-docker run --rm ${volumes} n0thub/headlessmc:latest 'login <mail> <pass>'
+# msa login (interactive)
+docker run -it --rm ${volumes} n0thub/headlessmc:latest 'login <mail>'
 
 # download mc
 docker run --rm ${volumes} n0thub/headlessmc:latest 'download 1.20.6'
