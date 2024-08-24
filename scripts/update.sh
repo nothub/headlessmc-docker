@@ -19,7 +19,7 @@ else
 fi
 
 file="$(mktemp)"
-curl -fsSL -o "${file}" "https://github.com/3arthqu4ke/HeadlessMc/releases/download/${version}/headlessmc-launcher-${version}.jar"
+curl -fsSL -o "${file}" "https://github.com/3arthqu4ke/HeadlessMc/releases/download/${version}/headlessmc-launcher-wrapper-${version}.jar"
 hash="$(sha256sum "${file}" | awk '{  print $1}')"
 rm -f "${file}"
 

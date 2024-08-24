@@ -1,8 +1,8 @@
 FROM debian:12-slim
 
 ARG HMC_VERSION="2.1.0"
-ARG HMC_CHECKSUM="2b2de42dd7440daf4e7e91d5f41f8b41b27d4e05bb3033a2b100bb6363e00cef"
-ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VERSION}/headlessmc-launcher-${HMC_VERSION}.jar"
+ARG HMC_CHECKSUM="87c4e0130e7c6aeb7b5a3736ba01003aa82e2b84b9e1a7cffced03f51ad8338d"
+ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VERSION}/headlessmc-launcher-wrapper-${HMC_VERSION}.jar"
 
 ADD "${HMC_URL}" /opt/hmc/launcher.jar
 RUN echo "${HMC_CHECKSUM} /opt/hmc/launcher.jar" | sha256sum -c -
