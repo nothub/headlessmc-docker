@@ -25,3 +25,6 @@ rm -f "${file}"
 
 sed -Ei "s/^ARG HMC_VERSION=\".+\"$/ARG HMC_VERSION=\"${version}\"/" Dockerfile
 sed -Ei "s/^ARG HMC_CHECKSUM=\".+\"$/ARG HMC_CHECKSUM=\"${hash}\"/" Dockerfile
+
+git add Dockerfile
+git commit -m "bump hmc to ${version}"
