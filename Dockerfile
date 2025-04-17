@@ -1,14 +1,18 @@
 FROM debian:12-slim
 
-ARG HMC_VERSION="2.4.1"
-ARG HMC_CHECKSUM="99625dff2805cd2b139157a49bf6d3d2edb577ab432171e512861ad9e31f98ec"
-ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VERSION}/headlessmc-launcher-wrapper-${HMC_VERSION}.jar"
+ARG HMC_VERSION="2.5.1"
+ARG HMC_CHECKSUM="d57abc3eac7a3d8fbe9412ef74c3b376bd5ee290c9c2656a455efe70b8271246"
+ARG HMC_URL="https://github.com/3arthqu4ke/HeadlessMc/releases/download/${HMC_VERSION}/headlessmc-launcher-linux-x64"
 
-ADD "${HMC_URL}" /opt/hmc/launcher.jar
-RUN echo "${HMC_CHECKSUM} /opt/hmc/launcher.jar" | sha256sum -c -
+ADD "${HMC_URL}" /usr/local/bin/headlessmc
+RUN echo "${HMC_CHECKSUM} /usr/local/bin/headlessmc" | sha256sum -c - \
+ && chmod +x /usr/local/bin/headlessmc
 
 COPY rootfs/ /
 
+# even tho hmc can download jvms on its own now, we distribute
+# some directly with the image because it is more convenient
+# then caching jvm downloads between container runs.
 RUN apt-get update                              \
  && apt-get upgrade -qy --with-new-pkgs         \
  && apt-get install -qy --no-install-recommends \
@@ -21,8 +25,6 @@ RUN apt-get update                              \
  && rm -f /usr/share/keyrings/adoptium.asc      \
  && apt-get update                              \
  && apt-get install -qy --no-install-recommends \
-    temurin-8-jdk                               \
-    temurin-11-jdk                              \
     temurin-17-jdk                              \
     temurin-21-jdk                              \
  && apt-get clean -qy                           \

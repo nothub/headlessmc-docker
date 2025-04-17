@@ -25,6 +25,8 @@ if test -n "${ADDR}"; then
         PORT="25565"
     fi
     echo >&2 "target server: ${ADDR}:${PORT}"
+    # --server and --port flags were replaced with --quickPlayMultiplayer
+    # we just pass all 3 because it works and i am lazy
     gameargs="--quickPlayMultiplayer ${ADDR}:${PORT} --server ${ADDR} --port ${PORT}"
     sed -Ei "s/hmc\.gameargs\s*=.*/hmc.gameargs=${gameargs}/g" "/work/HeadlessMC/config.properties"
 fi
@@ -33,4 +35,4 @@ find "/opt/hmc/" -type "f" -exec chmod "o+r" "{}" \;
 chown -R "hmc:hmc" "/work"
 
 cd "/work"
-runuser --user "hmc" --group "hmc" -- java -jar "/opt/hmc/launcher.jar" --command "${@}"
+runuser --user "hmc" --group "hmc" -- /usr/local/bin/headlessmc --command "${@}"
